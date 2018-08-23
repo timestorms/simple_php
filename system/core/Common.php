@@ -103,13 +103,21 @@
         }
     }
 
+    if (!function_exists('show_error')) {
+        function show_error($message, $status_code = 500) {
+            $_exception = & load_class('Exceptions', 'core');
+            $_exception->show_error($message, $status_code);
+            exit(1);
+        }
+    }
+
     if (!function_exists('_exception_handler')) {
         function __exception_handler($serverity, $message, $filepath, $line) {
             if ($serverity == E_STRICT) {
                 return;
             }
 
-            $_error = &load_class('Exception', 'core');
+            $_error = &load_class('Exceptions', 'core');
 
             
         }
