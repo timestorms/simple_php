@@ -111,6 +111,12 @@
         }
     }
 
+    if (!function_exists('show_404')) {
+        function show_404() {
+            $_error = & load_class('Exceptions', 'core');
+        }
+    }
+
     if (!function_exists('_exception_handler')) {
         function __exception_handler($serverity, $message, $filepath, $line) {
             if ($serverity == E_STRICT) {
