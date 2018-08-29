@@ -20,5 +20,12 @@
             ob_end_clean();
             return $buffer;
         }
+
+        public function show_404($page = '', $log_error = TRUE) {
+            $heading = '404 Page Not Found';
+            $message = 'The page you request is not found';
+            echo $this->show_error($heading, $message, 'error_404', 404);
+            exit;
+        }
     }
 ?>
