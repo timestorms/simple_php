@@ -14,9 +14,15 @@
             if (ob_get_level() > $this->ob_level + 1) {
                 ob_end_flush();
             }
+            // 打开输出控制缓冲
             ob_start();
+
             include(APPPATH . 'errors/' . $template . '.php');
+
+            // 返回输出缓冲区的内容
             $buffer = ob_get_contents();
+
+            // 静默丢弃掉缓冲区的内容
             ob_end_clean();
             return $buffer;
         }
